@@ -1,8 +1,10 @@
 import os
+import setuptools  # needed before importing numpy distutils
 from numpy.distutils.core import setup, Extension
 
-# Don't want to build the fortran on readthedocs
+
 exts = []
+# Don't want to build the fortran on readthedocs
 if not os.environ.get('READTHEDOCS', None):
     exts += [Extension(name='streamtracer.fortran.streamtracer',
                        sources=['streamtracer/fortran/Streamtracer.f90'],
